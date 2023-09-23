@@ -27,6 +27,9 @@ function bodyDecryptor(bodyCiphertext, headers) {
 
 // 创建HTTP服务器
 const server = http.createServer((req, res) => {
+    // 跨域设置
+    res.setHeader('Access-Control-Allow-Origin', process.env.AccessControlAllowOrigin || '*');
+
     const url = new URL(req.url, `http://${req.headers.host}`);
     if (req.method === "POST") {
         if (url.pathname.endsWith("/link")) {
