@@ -10,7 +10,7 @@ const { decodeCiphertext } = require('./TransmissionKey');
 const PORT = process.env.PORT || 3000;
 const BODY_DATA_LIMIT = 1 * 1024 * 1024;
 const CLIENT_TIMEOUT = 60;
-const SHOW_SERVERS = process.env.SHOW_SERVERS !== 'T';
+const SHOW_SERVERS = process.env.SHOW_SERVERS === 'T';
 
 function headersDecryptor(headersCiphertext) {
     return crypto.privateDecrypt(cert.privateKey, headersCiphertext);
