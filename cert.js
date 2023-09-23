@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 
-let publicKeyBase64 = undefined;
-let privateKeyBase64 = undefined;
+let publicKeyBase64 = process.env.publicKeyBase64 || undefined;
+let privateKeyBase64 = process.env.privateKeyBase64 || undefined;
 
 if (!publicKeyBase64 || !privateKeyBase64) {
     // 生成RSA密钥对
@@ -13,8 +13,8 @@ if (!publicKeyBase64 || !privateKeyBase64) {
     privateKeyBase64 = privateKey.export({ type: 'pkcs8', format: 'der' }).toString('base64');
     // 输出生成的秘钥
     console.log("已生成秘钥:" 
-        + "\r\n - 公钥: %s"
-        + "\r\n - 私钥: %s", publicKeyBase64, privateKeyBase64);
+        + "\r\n - 公钥: [%s]"
+        + "\r\n - 私钥: [%s]", publicKeyBase64, privateKeyBase64);
 }
 
 // 加载Base64编码的公钥和私钥
